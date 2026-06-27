@@ -1,171 +1,127 @@
 
-js
-function maiorValor(a, b) {
-  if (typeof a === 'number' && typeof b === 'number') {
+function maiorNumero(a, b) {
     if (a > b) {
-      return `${a} é maior`;
+        return `${a} é maior que ${b}`;
+    } else if (b > a) {
+        return `${b} é maior que ${a}`;
+    } else {
+        return `${a} e ${b} são iguais`;
     }
-
-    if (b > a) {
-      return `${b} é maior`;
-    }
-
-    return 'Os valores são iguais';
-  } else {
-    return 'Digite números';
-  }
 }
 
-function parOuImpar(a, b) {
-  if (typeof a === 'number' && typeof b === 'number') {
-    let resultadoA = a % 2 === 0 ? 'par' : 'ímpar';
-    let resultadoB = b % 2 === 0 ? 'par' : 'ímpar';
-
-    return `${a} é ${resultadoA} e ${b} é ${resultadoB}`;
-  } else {
-    return 'Digite números';
-  }
+function parOuImpar(numero) {
+    if (numero % 2 === 0) {
+        return `${numero} é par`;
+    } else {
+        return `${numero} é ímpar`;
+    }
 }
 
-function votar(idade) {
-  if (typeof idade === 'number') {
+function podeVotar(idade) {
     if (idade < 16) {
-      return 'Não pode votar';
+        return `Com ${idade} anos: Não pode votar`;
+    } else if (idade >= 16 && idade < 18) {
+        return `Com ${idade} anos: Voto opcional`;
+    } else if (idade >= 18 && idade <= 70) {
+        return `Com ${idade} anos: Voto obrigatório`;
+    } else {
+        return `Com ${idade} anos: Voto opcional`;
     }
-
-    if ((idade >= 16 && idade < 18) || idade >= 70) {
-      return 'Voto opcional';
-    }
-
-    return 'Pode votar';
-  } else {
-    return 'Digite um número';
-  }
 }
 
-function verificarNumero(valor) {
-  if (typeof valor === 'number') {
-    if (valor > 0) {
-      return 'Positivo';
+function verificarNumero(numero) {
+    if (numero > 0) {
+        return `${numero} é positivo`;
+    } else if (numero < 0) {
+        return `${numero} é negativo`;
+    } else {
+        return `${numero} é zero`;
     }
-
-    if (valor < 0) {
-      return 'Negativo';
-    }
-
-    return 'Igual a zero';
-  } else {
-    return 'Digite um número';
-  }
 }
 
-function salario(salario) {
-  if (typeof salario === 'number') {
-    if (salario >= 5000) {
-      return 'O salário tem um bônus de 5%';
-    }
-
-    if (salario >= 2000 && salario < 5000) {
-      return 'O salário tem um bônus de 10%';
-    }
-
+function calcularBonus(salario) {
     if (salario < 2000) {
-      return 'O salário tem um bônus de 20%';
+        return `Salário: R$ ${salario}, Bônus: R$ ${salario * 0.2} (20%)`;
+    } else if (salario >= 2000 && salario <= 5000) {
+        return `Salário: R$ ${salario}, Bônus: R$ ${salario * 0.1} (10%)`;
+    } else {
+        return `Salário: R$ ${salario}, Bônus: R$ ${salario * 0.05} (5%)`;
     }
-  } else {
-    return 'Digite um número';
-  }
 }
 
-function dirigir(idade) {
-  if (typeof idade === 'number') {
+function podeDirigir(idade) {
     if (idade >= 18) {
-      return 'Pode dirigir';
+        return `Com ${idade} anos: Pode dirigir`;
+    } else {
+        return `Com ${idade} anos: Não pode dirigir`;
     }
-
-    return 'Não pode dirigir';
-  } else {
-    return 'Digite um número';
-  }
 }
 
-function semestre(mes) {
-  if (typeof mes === 'string') {
-    mes = mes.toLowerCase();
-
-    if (
-      mes === 'janeiro' ||
-      mes === 'fevereiro' ||
-      mes === 'março' ||
-      mes === 'abril' ||
-      mes === 'maio' ||
-      mes === 'junho'
-    ) {
-      return 'Primeiro semestre';
+function semestreDoMes(mes) {
+    const mesesPrimeiro = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho'];
+    const mesesSegundo = ['julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+    
+    const mesLower = mes.toLowerCase();
+    
+    if (mesesPrimeiro.includes(mesLower)) {
+        return `${mes} é do 1º semestre`;
+    } else if (mesesSegundo.includes(mesLower)) {
+        return `${mes} é do 2º semestre`;
+    } else {
+        return `Mês inválido: ${mes}`;
     }
-
-    return 'Segundo semestre';
-  } else {
-    return 'Digite um mês válido';
-  }
 }
 
 function vogalOuConsoante(letra) {
-  if (typeof letra === 'string') {
-    letra = letra.toLowerCase();
-
-    if (
-      letra === 'a' ||
-      letra === 'e' ||
-      letra === 'i' ||
-      letra === 'o' ||
-      letra === 'u'
-    ) {
-      return 'Vogal';
+    const vogais = ['a', 'e', 'i', 'o', 'u'];
+    const letraLower = letra.toLowerCase();
+    
+    if (vogais.includes(letraLower)) {
+        return `${letra} é uma vogal`;
+    } else {
+        return `${letra} é uma consoante`;
     }
-
-    return 'Consoante';
-  } else {
-    return 'Digite uma letra';
-  }
 }
 
-function media(array) {
-  if (typeof array === 'object') {
+function calcularMedia(array) {
+    if (array.length === 0) return 'Array vazio';
+    
     let soma = 0;
-
     for (let i = 0; i < array.length; i++) {
-      soma += array[i];
+        soma += array[i];
     }
-
-    return `A média é ${soma / array.length}`;
-  } else {
-    return 'Digite um array';
-  }
+    const media = soma / array.length;
+    return `Média: ${media.toFixed(2)}`;
 }
 
-function login(usuario, senha) {
-  if (typeof usuario === 'string' && typeof senha === 'string') {
+function fazerLogin(usuario, senha) {
     if (usuario === 'Admin' && senha === '123') {
-      return 'Conectado com sucesso!';
+        return 'Conectado com sucesso!';
+    } else {
+        return 'Acesso negado! Usuário ou senha incorretos!';
     }
-
-    return 'Acesso negado! Usuário ou senha incorretos!';
-  } else {
-    return 'Digite dados válidos';
-  }
 }
 
-module.exports = {
-  maiorValor,
-  parOuImpar,
-  votar,
-  verificarNumero,
-  salario,
-  dirigir,
-  semestre,
-  vogalOuConsoante,
-  media,
-  login
-};
+function somar(a, b) {
+    return a + b;
+}
 
+function mensagemBoasVindas(nome) {
+    return `Olá, ${nome}!`;
+}
+
+
+module.exports = { 
+    maiorNumero,
+    parOuImpar,
+    podeVotar,
+    verificarNumero,
+    calcularBonus,
+    podeDirigir,
+    semestreDoMes,
+    vogalOuConsoante,
+    calcularMedia,
+    fazerLogin,
+    somar,
+    mensagemBoasVindas
+};
